@@ -17,13 +17,8 @@ namespace Y9_DEC_TO_BIN_SKELETON
             //TASK 1:
             int myStringAsInt = Convert.ToInt32(myString); //watch me cast from string to int
 
-          
-            //TASK 2:
-
-            int insertmyString = Convert.ToInt32(myString.Insert(0,"Your number is "));
-
             //MAIN:  NUMBER CONVERSION PROGRAM
-            Console.WriteLine("Enter your number");
+            Console.WriteLine("Enter the number that you want to convert to binary:");
             Console.WriteLine(numberConversion(Convert.ToInt32(Console.ReadLine()), 2));
         }
 
@@ -31,8 +26,15 @@ namespace Y9_DEC_TO_BIN_SKELETON
         //...this function DOES return a value so the method must have a data type
         static string numberConversion(int number, int numberbase)
         {
-            string binaryArray = { };
-            return Convert.ToString(number % numberbase);
+            int remainder = 0;
+            string result = "";
+            while (number > 0)
+            {
+                remainder = number % numberbase;
+                number = number / numberbase;
+                result = remainder + result;
+            }
+            return result;
         }
     }
 }
